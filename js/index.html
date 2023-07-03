@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Emilia Miki's solution to Become a Developer Test Task</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <textarea id="text" cols="80" rows="24"></textarea>
+    <div>Result: <span id="result" /></div>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      textarea#text {
+        border-color: #ee72f1;
+        border-width: 6px;
+        border-style: solid;
+        padding: 12px;
+        outline: none;
+      }
+
+      body,
+      textarea#text {
+        color: white;
+        background-color: #21202c;
+        font-size: 14pt;
+      }
+    </style>
+    <script>
+      /**
+        Finds the first unique character in a word.
+        The argument string must be normalized if it contains Unicode Mark (M) characters.
+        @param {string} word - The word to find the first unique character of.
+        @returns {string} The first unique character in word or "There are no unique characters"
+      */
+      function findFirstUniqueCharacter(word) {
+        const ordinal = {};
+        const isUnique = {};
+        for (let i = 0; i < word.length; i++) {
+          if (isUnique[word[i]]) {
+            isUnique[word[i]] = false;
+            continue;
+          }
+
+          ordinal[word[i]] = i;
+          isUnique[word[i]] = true;
+        }
+
+        let minOrdinal = Infinity;
+        Object.keys(isUnique).forEach((k) => {
+          if (isUnique[k] && ordinal[k] < minOrdinal) {
+            minOrdinal = ordinal[k];
+          }
+        });
+
+        if (minOrdinal === Infinity) {
+          return "There are no unique characters";
+        }
+
+        return word[minOrdinal];
+      }
+
+      /**
+        Finds the first unique character in the sequence of the first unique
+        characters of each word in the provided text.
+        @param {string} textRaw The text to be processed
+        @returns {string} The result or "There are no unique characters"
+      */
+      function processText(textRaw) {
+        const regex = /\p{L}+/gu;
+
+        const text = textRaw.normalize();
+        const words = text.match(regex);
+
+        const uniqueCharacters = [];
+        if (words !== null) {
+          words.forEach((word) => {
+            const character = findFirstUniqueCharacter(word);
+            if (character != "There are no unique characters") {
+              uniqueCharacters.push(character);
+            }
+          });
+        }
+        return findFirstUniqueCharacter(uniqueCharacters);
+      }
+
+      const text = document.getElementById("text");
+      const result = document.getElementById("result");
+      const refresh = () => (result.innerText = processText(text.value));
+      text.addEventListener("input", refresh);
+
+      refresh();
+    </script>
+  </body>
+</html>
