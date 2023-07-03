@@ -48,7 +48,7 @@ expressions to split it into words, and runs the algorithm.
 
 ## How to compile and run the solution
 
-### Go:
+### Go
 
 ```bash
 # Clone this repository
