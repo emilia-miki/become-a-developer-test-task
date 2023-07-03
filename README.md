@@ -54,7 +54,6 @@ expressions to split it into words, and runs the algorithm.
 # Clone this repository
 git clone https://github.com/emilia-miki/become-a-developer-test-task
 cd become-a-developer-test-task/go # Enter the program's directory
-go install # Install dependencies
 go build # Build the program
 ./go # Run it
 # Enter text here
