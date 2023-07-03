@@ -46,21 +46,16 @@ expressions to split it into words, and runs the algorithm.
 
 ### Go:
 
-- If you haven't already, download and install Go: https://go.dev/doc/install.
-- Clone this repository: ```git clone https://github.com/emilia-miki/become-a-developer-test-task```
-- Enter the go program's directory: ```cd become-a-developer-test-task/go```
-- Install dependencies: ```go install```
-- Build the program: ```go build```
-- Run the program ```./go```, providing the input text to ```stdin``` with ^D on
-  the last line for EOF, or cat and pipe a file into it: ```cat my_text.txt | ./go```
-
-Full list of commands for copying:
 ```bash
+# Clone this repository
 git clone https://github.com/emilia-miki/become-a-developer-test-task
-cd become-a-developer-test-task/go
-go install
-go build
-./go
+cd become-a-developer-test-task/go # Enter the program's directory
+go install # Install dependencies
+go build # Build the program
+./go # Run it
+# Enter text here
+# Press ^D on an empty line to finish typing and get the result, or pipe a file:
+# cat my_text.txt | ./go
 ```
 
 ### JavaScript
